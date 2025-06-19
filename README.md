@@ -1,15 +1,15 @@
-# Test Suite Submission – WMT25/AACL
+# Test Suite Submission – AACL/WMT25
 
 **Test Suite Name**: Legal Domain English-Hindi Test Suite  
 **Institution**: AI & NLP Research Group, IIT Patna  
 **Contact Email**: boynfrancis@gmail.com  
 
 
-# WMT25/AACL Test Suite Submission – English to Hindi (Legal Domain)
+# AACL/WMT25 Test Suite Submission – English to Hindi (Legal Domain)
 
 ## Overview
 
-This repository contains a test dataset prepared for the **WMT25/AACL Shared Task** on English to Hindi Machine Translation, specifically targeting the **Legal domain**.
+This repository contains a test dataset prepared for the **AACL/WMT25 Shared Task** on English to Hindi Machine Translation, specifically targeting the **Legal domain**.
 
 - **Language Pair:** English → Hindi  
 - **Domain:** Legal  
@@ -56,7 +56,7 @@ Each group contains 100 English-Hindi parallel sentence pairs from legal texts s
 
 - For **testing and evaluation** only (not training)
 - Suitable for assessing translation quality across sentence lengths in the legal domain
-- Recommended for use in WMT25/AACL Shared Task submissions
+- Recommended for use in AACL/WMT25 Shared Task submissions
 
 ---
 
