@@ -11,7 +11,7 @@
 
 This repository contains a test dataset prepared for the **AACL/WMT25 Shared Task** on English to Hindi Machine Translation, specifically targeting the **Legal domain**.
 
-- **Language Pair:** English{https://github.com/helloboyn/AACL25-MT/blob/main/eng-hin-test.eng.txt} → Hindi{https://github.com/helloboyn/AACL25-MT/blob/main/eng-hin-test.hin.txt}  
+- **Language Pair:** [English] (https://github.com/helloboyn/AACL25-MT/blob/main/eng-hin-test.eng.txt) → [Hindi] (https://github.com/helloboyn/AACL25-MT/blob/main/eng-hin-test.hin.txt)  
 - **Domain:** Legal  
 - **Total Sentences:** 5,000  
 - **Word Count Distribution:** 100 sentences each for word lengths from **5 to 54** words
