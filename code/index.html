@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The State of Legal Machine Translation: An Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+        }
+        .flowchart-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            color: #ffffff;
+            font-weight: 600;
+            min-height: 80px;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #1E3A8A;
+            margin: 0 1rem;
+            transform: rotate(90deg);
+        }
+        @media (min-width: 768px) {
+           .flowchart-arrow {
+                transform: rotate(0deg);
+           }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-2">Advancing Legal Machine Translation</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">An infographic visualizing the key findings from the WMT25 Legal Domain Test Suite, highlighting the performance of Large Language Models (LLMs) and the future of automated legal text translation.</p>
+        </header>
+
+        <section id="overview" class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="kpi-card bg-blue-100 border-l-4 border-blue-500">
+                    <h3 class="text-5xl font-bold text-blue-900">5,000</h3>
+                    <p class="text-gray-700 mt-2">Sentences Analyzed</p>
+                    <p class="text-sm text-gray-500 mt-1">From the WMT25 English-Hindi legal dataset, ranging from 5 to 55 words in length.</p>
+                </div>
+                <div class="kpi-card bg-green-100 border-l-4 border-green-500">
+                    <h3 class="text-5xl font-bold text-green-900">33.35</h3>
+                    <p class="text-gray-700 mt-2">Top BLEU Score</p>
+                    <p class="text-sm text-gray-500 mt-1">Achieved by Gemini-2.5-Pro, demonstrating superior lexical accuracy.</p>
+                </div>
+                <div class="kpi-card bg-purple-100 border-l-4 border-purple-500">
+                    <h3 class="text-5xl font-bold text-purple-900">60.95</h3>
+                    <p class="text-gray-700 mt-2">Top CHRF++ Score</p>
+                    <p class="text-sm text-gray-500 mt-1">Also by Gemini-2.5-Pro, indicating high character-level fidelity, crucial for legal texts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance-comparison" class="mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-2">Model Performance Leaderboard</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">This chart compares the top 10 Machine Translation systems based on the COMET score, a metric highly correlated with human judgment. LLM-based systems clearly dominate the top ranks.</p>
+                <div class="chart-container h-[500px] max-h-[500px]">
+                    <canvas id="leaderboardChart"></canvas>
+                </div>
+                 <p class="text-sm text-gray-500 mt-4 text-center">The chart visualizes the COMET scores, which predict human judgments of translation quality. Higher scores indicate better performance. Gemini-2.5-Pro leads, followed closely by a mix of specialized NMT and other large language models, showcasing the competitive landscape.</p>
+            </div>
+        </section>
+
+        <section id="metric-deep-dive" class="mb-16">
+             <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-2">Performance Across Key Metrics</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">This radar chart provides a multi-faceted view of the top 5 systems, comparing their performance across three critical and complementary evaluation metrics: BLEU, METEOR, and CHRF++.</p>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <p class="text-sm text-gray-500 mt-4 text-center">Each axis represents a different quality metric. A larger area indicates a more balanced and robust performance. Gemini-2.5-Pro shows strong, well-rounded capabilities, while other systems exhibit varying strengths. For instance, some systems excel in lexical overlap (BLEU) but are weaker in character-level accuracy (CHRF++).</p>
+            </div>
+        </section>
+
+        <section id="gemini-tool" class="mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-2">✨ Legal Translation & Analysis Tool ✨</h2>
+                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Input a legal phrase or sentence in English and let the Gemini API provide a translation and a brief quality analysis.</p>
+                <div class="max-w-2xl mx-auto">
+                    <div class="mb-4">
+                        <label for="inputText" class="block text-gray-700 font-bold mb-2">Enter English Legal Text:</label>
+                        <textarea id="inputText" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="e.g., The defendant is presumed innocent until proven guilty beyond a reasonable doubt."></textarea>
+                    </div>
+                    <div class="mb-6">
+                         <label for="languageSelect" class="block text-gray-700 font-bold mb-2">Translate to:</label>
+                         <select id="languageSelect" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="Hindi">Hindi</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="German">German</option>
+                         </select>
+                    </div>
+                    <button id="translateButton" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-md shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">
+                        ✨ Translate & Analyze ✨
+                    </button>
+                    <div id="output" class="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                        <span id="loading" class="hidden text-gray-500">Translating and analyzing...</span>
+                        <div id="translationResult" class="hidden">
+                            <h4 class="font-bold text-xl text-blue-900 mb-2">Translation:</h4>
+                            <p id="translatedText" class="text-gray-700 text-lg mb-4"></p>
+                            <h4 class="font-bold text-xl text-blue-900 mb-2">Analysis:</h4>
+                            <p id="analysisText" class="text-gray-700"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluation-evolution" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-2">The Evolution of Translation Evaluation</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">The methodology for assessing translation quality is shifting from simple word-matching to more nuanced, human-aligned frameworks. This is crucial in the legal field where meaning and precision are paramount.</p>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="flowchart-step bg-blue-800 w-full md:w-1/4">
+                    <p><strong>Traditional Metrics</strong><br><span class="font-normal text-sm">(e.g., BLEU)</span></p>
+                </div>
+                <div class="flowchart-arrow">➔</div>
+                <div class="flowchart-step bg-blue-700 w-full md:w-1/4">
+                    <p><strong>Advanced Metrics</strong><br><span class="font-normal text-sm">(e.g., METEOR, CHRF++)</span></p>
+                </div>
+                <div class="flowchart-arrow">➔</div>
+                <div class="flowchart-step bg-blue-600 w-full md:w-1/4">
+                     <p><strong>Neural & Human-Aligned</strong><br><span class="font-normal text-sm">(e.g., COMET, MQM)</span></p>
+                </div>
+            </div>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-blue-900">Lexical Overlap</h4>
+                    <p class="text-gray-600">Early metrics focused on matching words and phrases, which is useful for terminology but misses overall fluency and meaning.</p>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-blue-900">Semantic & Structural Similarity</h4>
+                    <p class="text-gray-600">Metrics like METEOR and CHRF++ improved evaluation by considering synonyms, word stems, and character sequences, offering a more accurate quality signal.</p>
+                </div>
+                 <div class="p-4">
+                    <h4 class="font-bold text-lg text-blue-900">Explainable & Human-Aligned</h4>
+                    <p class="text-gray-600">Modern frameworks like COMET and MQM aim to replicate human judgment, identifying specific error types and providing actionable feedback for improvement.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges" class="mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-2">Critical Challenges & The Path Forward</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">While LLMs show immense promise, their deployment in high-stakes legal environments requires addressing key challenges related to reliability and trustworthiness.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                        <h4 class="font-bold text-xl text-red-900 mb-2">🚨 The Hallucination Problem</h4>
+                        <p class="text-gray-700">LLMs can generate plausible but factually incorrect or legally unsound content. In a legal context, this poses a significant risk, potentially leading to contractual disputes or miscarriages of justice.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h4 class="font-bold text-xl text-green-900 mb-2">💡 The Need for Explainability</h4>
+                        <p class="text-gray-700">Legal reasoning must be transparent and auditable. "Black-box" AI is insufficient. The future lies in Neuro-Symbolic AI, which combines LLM fluency with logic-based systems to provide clear, traceable, and justifiable outputs that align with legal standards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-300">
+            <p class="text-gray-600">Infographic based on the WMT25 Legal Domain Test Suite System Paper and accompanying dataset.</p>
+            <p class="text-sm text-gray-500 mt-1">Designed by Canvas Infographics.</p>
+        </footer>
+    </div>
+
+    <script>
+        const vibrantPalette = {
+            blue900: '#1E3A8A',
+            blue800: '#1E40AF',
+            blue700: '#1D4ED8',
+            blue600: '#2563EB',
+            green500: '#22C55E',
+            purple500: '#8B5CF6',
+            red500: '#EF4444',
+            gray600: '#4B5563',
+            white: '#FFFFFF'
+        };
+
+        function wrapLabel(label, maxLength = 16) {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
+
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+        
+        const leaderboardData = {
+            systems: ['Gemini-2.5-Pro', 'hybrid', 'TranssionTranslate', 'Claude-4', 'ONLINE-B', 'Llama-4-Maverick', 'NLLB', 'DeepSeek-V3', 'GPT-4.1', 'TowerPlus-9B'],
+            cometScores: [72.27, 71.20, 71.01, 70.99, 70.96, 69.86, 68.16, 71.20, 68.16, 68.85]
+        };
+
+        new Chart(document.getElementById('leaderboardChart'), {
+            type: 'bar',
+            data: {
+                labels: leaderboardData.systems.map(label => wrapLabel(label)),
+                datasets: [{
+                    label: 'COMET Score',
+                    data: leaderboardData.cometScores,
+                    backgroundColor: [vibrantPalette.blue800, vibrantPalette.blue700, vibrantPalette.blue600, '#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE', '#DBEAFE', '#EBF5FF', '#F0F9FF'],
+                    borderColor: vibrantPalette.blue900,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: false,
+                        min: 65,
+                        title: {
+                            display: true,
+                            text: 'COMET Score (Higher is Better)',
+                            color: vibrantPalette.gray600,
+                            font: { size: 14 }
+                        }
+                    },
+                    y: {
+                         ticks: {
+                            font: { size: 10 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const radarData = {
+            labels: ['BLEU', 'METEOR', 'CHRF++'],
+            datasets: [
+                {
+                    label: 'Gemini-2.5-Pro',
+                    data: [33.35, 53.91, 60.95],
+                    borderColor: vibrantPalette.blue800,
+                    backgroundColor: 'rgba(30, 64, 175, 0.2)',
+                    pointBackgroundColor: vibrantPalette.blue800,
+                },
+                {
+                    label: 'ONLINE-B',
+                    data: [31.77, 52.37, 57.81],
+                    borderColor: vibrantPalette.green500,
+                    backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                    pointBackgroundColor: vibrantPalette.green500,
+                },
+                {
+                    label: 'TranssionTranslate',
+                    data: [31.65, 52.42, 57.83],
+                    borderColor: vibrantPalette.purple500,
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    pointBackgroundColor: vibrantPalette.purple500,
+                },
+                {
+                    label: 'ONLINE-G',
+                    data: [31.22, 57.30, 52.06],
+                    borderColor: vibrantPalette.red500,
+                    backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                    pointBackgroundColor: vibrantPalette.red500,
+                },
+                {
+                    label: 'Claude-4',
+                    data: [31.09, 52.75, 57.87],
+                    borderColor: '#F97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    pointBackgroundColor: '#F97316',
+                }
+            ]
+        };
+
+        new Chart(document.getElementById('radarChart'), {
+            type: 'radar',
+            data: radarData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 20,
+                        suggestedMax: 65,
+                        pointLabels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+        
+        document.getElementById('translateButton').addEventListener('click', translateText);
+
+        async function translateText() {
+            const inputText = document.getElementById('inputText').value;
+            const language = document.getElementById('languageSelect').value;
+            const outputDiv = document.getElementById('output');
+            const loadingSpan = document.getElementById('loading');
+            const resultDiv = document.getElementById('translationResult');
+            const translatedTextElem = document.getElementById('translatedText');
+            const analysisTextElem = document.getElementById('analysisText');
+
+            if (!inputText) {
+                alert('Please enter some text to translate.');
+                return;
+            }
+
+            loadingSpan.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+            translatedTextElem.textContent = '';
+            analysisTextElem.textContent = '';
+
+            const prompt = `Translate the following legal text from English to ${language}. After the translation, provide a brief analysis (in English) of the translation's quality, noting any potential ambiguities, cultural nuances, or legal-specific terms that are difficult to capture perfectly. Format the response as "Translation: [translated text] Analysis: [analysis text]".
+            Text to translate: ${inputText}`;
+
+            try {
+                 let chatHistory = [];
+                 chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                 const payload = { contents: chatHistory };
+                 const apiKey = "" 
+                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                 const response = await fetch(apiUrl, {
+                     method: 'POST',
+                     headers: { 'Content-Type': 'application/json' },
+                     body: JSON.stringify(payload)
+                 });
+                 const result = await response.json();
+                 
+                 if (result.candidates && result.candidates.length > 0 &&
+                     result.candidates[0].content && result.candidates[0].content.parts &&
+                     result.candidates[0].content.parts.length > 0) {
+                   const text = result.candidates[0].content.parts[0].text;
+                   const [translationPart, analysisPart] = text.split('Analysis:');
+                   translatedTextElem.textContent = translationPart.replace('Translation:', '').trim();
+                   analysisTextElem.textContent = analysisPart.trim();
+                   resultDiv.classList.remove('hidden');
+                 } else {
+                   analysisTextElem.textContent = 'Could not get a valid response from the API.';
+                   resultDiv.classList.remove('hidden');
+                 }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                analysisTextElem.textContent = `An error occurred: ${error.message}`;
+                resultDiv.classList.remove('hidden');
+            } finally {
+                loadingSpan.classList.add('hidden');
+            }
+        }
+
+    </script>
+</body>
+</html>
