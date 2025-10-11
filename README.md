@@ -2,7 +2,7 @@
 
 **Test Suite Name**: Legal Domain English-Hindi Test Suite  
 **Institution**: AI & NLP Research Group, IIT Patna  
-**Contact Email**: boynfrancis@gmail.com  
+**Contact Email**: boynfrancis[at]gmail[.]com  
 
 
 # WMT-TS Test Suite Submission – English to Hindi (Legal Domain)
@@ -59,6 +59,7 @@ Each group contains 100 English-Hindi parallel sentence pairs from legal texts s
 - Recommended for use in WMT-TS Shared Task submissions
 
 ---
+
 
 
 
