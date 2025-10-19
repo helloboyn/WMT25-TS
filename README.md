@@ -1,3 +1,6 @@
+## 📄 Research Paper
+[Evaluation of LLM for English to Hindi Legal Domain Machine Translation Systems(WMT25)]([https://arxiv.org/new-id](https://www2.statmt.org/wmt25/pdf/2025.wmt-1.57.pdf))
+
 # Test Suite Submission – WMT-TS
 
 **Test Suite Name**: Legal Domain English-Hindi Test Suite  
@@ -76,6 +79,7 @@ Cite this Paper:
 }
 
 ```
+
 
 
 
