@@ -1,6 +1,6 @@
 ## 📄 [Evaluation of LLM for English to Hindi Legal Domain Machine Translation Systems](https://www2.statmt.org/wmt25/pdf/2025.wmt-1.57.pdf)
 
-# [WMT25-TS](https://huggingface.co/datasets/helloboyn/WMT25-TS)
+## [WMT25-TS](https://huggingface.co/datasets/helloboyn/WMT25-TS)
 
 **Test Suite Name**: Legal Domain English-Hindi Test Suite  
 **Institution**: AI & NLP Research Group, IIT Patna  
@@ -11,7 +11,7 @@
 
 ## Overview
 
-This repository contains a test dataset prepared for the **WMT25-TS Shared Task** on English to Hindi Machine Translation, specifically targeting the **Legal domain**.
+This repository contains a test dataset prepared for the **[WMT25-TS Shared Task](https://huggingface.co/datasets/helloboyn/WMT25-TS)** on English to Hindi Machine Translation, specifically targeting the **Legal domain**.
 
 - **Language Pair:** [English](https://huggingface.co/datasets/helloboyn/WMT25-TS/blob/main/eng-hin-test.eng.txt) → [Hindi](https://huggingface.co/datasets/helloboyn/WMT25-TS/blob/main/eng-hin-test.hin.txt)
 - **Domain:** Legal  
@@ -78,6 +78,7 @@ Cite this Paper:
 }
 
 ```
+
 
 
 
